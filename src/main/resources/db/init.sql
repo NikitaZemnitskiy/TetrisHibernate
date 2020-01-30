@@ -1,14 +1,14 @@
 CREATE TABLE IF NOT EXISTS game
 (
     game_id SERIAL,
-    state   boolean NOT NULL DEFAULT NULL,
+    state VARCHAR(20) NOT NULL,
     PRIMARY KEY (game_id)
 );
 
-CREATE TABLE IF NOT EXISTS figureType
+CREATE TABLE IF NOT EXISTS figure_type
 (
     figure_type_id   SERIAL,
-    figure_structure VARCHAR(20) NOT NULL,
+    figure_structure VARCHAR(255) NOT NULL,
     PRIMARY KEY (figure_type_id)
 );
 

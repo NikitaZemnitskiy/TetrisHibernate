@@ -19,7 +19,7 @@ public class UserMoveHandler implements MoveHandler {
         MoveEventType event;
         do {
             event = moveEventPool.pool.get(scanner.nextLine());
-            moveRepository.sameNewMoveEvent(gameId);
+            moveRepository.saveNewMoveEvent(gameId, event);
         } while (event == null);
         return event;
     }
