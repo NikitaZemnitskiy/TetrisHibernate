@@ -11,7 +11,7 @@ import java.util.Optional;
 public class GameRepository implements Repository {
     public static void main(String[] args) {
         GameRepository g = new GameRepository();
-        g.createNewGame();
+       g.finishGame(1);
     }
 
 

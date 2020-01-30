@@ -15,6 +15,8 @@ import java.util.List;
 
 public class FigureRepository implements Repository {
     public static void main(String[] args) {
+        FigureRepository figureRepository = new FigureRepository();
+        System.out.println(figureRepository.getFigureById(1));
 
     }
 
@@ -50,4 +52,16 @@ public class FigureRepository implements Repository {
             return figuresList;
         }
     }
+    @SneakyThrows
+    public Figure getFigureById(int id){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+            session.beginTransaction();
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonString = session.get(FigureType.class, id).getFigureStructure();
+            com.tetris.game.Figure figure = objectMapper.readValue(jsonString, Figure.class);
+            session.getTransaction().commit();
+            return figure;
+        }
+    }
+
 }

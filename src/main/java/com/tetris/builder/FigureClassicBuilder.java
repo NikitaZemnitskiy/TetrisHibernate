@@ -1,8 +1,9 @@
 package com.tetris.builder;
 
+import com.tetris.db.repositories.impl.FigureRepository;
 import com.tetris.game.Figure;
 import com.tetris.model.Point;
-//import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 
 public class FigureClassicBuilder extends AbstractFigureBuilder {
 
@@ -12,8 +13,9 @@ public class FigureClassicBuilder extends AbstractFigureBuilder {
 
     @Override
     public Figure next(Point boardStartPoint) {
-        repository.saveNewFigure(getGameId(), 0);
-     //   throw new NotImplementedException();
-        return null;
+        int randomFigureId = (int) (Math.random() * 4) + 1;
+        FigureRepository figureRepository = new FigureRepository();
+        repository.saveNewFigure(getGameId(), randomFigureId);
+        return figureRepository.getFigureById(randomFigureId);
     }
 }

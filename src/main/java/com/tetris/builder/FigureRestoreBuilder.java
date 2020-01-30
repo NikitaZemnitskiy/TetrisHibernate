@@ -1,5 +1,6 @@
 package com.tetris.builder;
 
+import com.tetris.db.repositories.impl.FigureRepository;
 import com.tetris.game.Figure;
 import com.tetris.model.Point;
 //import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -15,7 +16,8 @@ public class FigureRestoreBuilder extends AbstractFigureBuilder {
 
     @Override
     public Figure next(Point boardStartPoint) {
-        return null;
-   //     throw new NotImplementedException();
+        FigureRepository figureRepository = new FigureRepository();
+        // rewrite
+        return figureRepository.getFiguresByGameId(getGameId()).get(0);
     }
 }
